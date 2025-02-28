@@ -1,0 +1,21 @@
+.k-container {
+  @apply px-4 sm:px-10 lg:px-20;
+}
+.heading-1 {
+  @apply text-4xl leading-[3.5rem] font-bold;
+}
+.heading-2 {
+  @apply text-3xl font-bold leading-10;
+}
+.heading-3 {
+  @apply text-2xl font-bold;
+}
+.heading-4 {
+  @apply text-xl font-bold;
+}
+.heading-4 {
+  @apply text-xl font-bold;
+}
+.authCard-border {
+  @apply border border-neutral-50 rounded-sm;
+}
