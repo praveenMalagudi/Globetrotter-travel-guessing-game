@@ -14,7 +14,7 @@ const FinalRoute = ({ route }: { route: routeType }) => {
       router.push("/login");
     }
     if (isLoggedIn() && route.path == "/login") {
-      router.push("/projects");
+      router.push("/home");
     }
   }, [location]);
 

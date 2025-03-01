@@ -4,8 +4,6 @@ import { store } from "./api";
 import Router from "@/routes";
 
 function App() {
- 
-
   return (
     <Provider store={store}>
       <Router />
@@ -14,3 +12,4 @@ function App() {
 }
 
 export default App;
+  

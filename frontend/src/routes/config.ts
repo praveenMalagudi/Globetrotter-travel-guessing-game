@@ -9,10 +9,23 @@ export const DefaultRoute = "/login";
  * If a route requires blank layout, provide layout: 'blank'
  */
 export const pageRoutes: Array<routeType> = [
-  // {
-  //   path: "/",
-  //   component: lazy(() => import("@/pages/Home")),
-  //   public: true,
-  //   layout: "blank",
-  // },
+  {
+    path: "/login",
+    component: lazy(() => import("@/pages/auth/Login")),
+    public: true,
+    layout: "blank",
+    authLayout: false,
+  },
+  {
+    path: "/signup",
+    component: lazy(() => import("@/pages/auth/Registration")),
+    public: true,
+    layout: "blank",
+  },
+  {
+    path: "/home",
+    component: lazy(() => import("@/pages/home/Home")),
+    public: true,
+    layout: "blank",
+  },
 ];

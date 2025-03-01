@@ -6,7 +6,7 @@ import {
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:8000",
+  baseUrl: import.meta.env.VITE_BASE_URL,
   credentials: "include",
   prepareHeaders: (headers) => {
     if (localStorage.getItem("token")) {
@@ -67,14 +67,14 @@ export const sampleApi = createApi({
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (newUser) => ({
-        url: "/register-user",
+        url: "/users/register",
         method: "POST",
         body: newUser,
       }),
     }),
     loginUser: builder.mutation({
       query: (body) => ({
-        url: "/login/",
+        url: "/users/login",
         method: "POST",
         body,
       }),
@@ -91,43 +91,26 @@ export const sampleApi = createApi({
         url: "/get-user-details/",
       }),
     }),
-    resetPassword: builder.mutation({
-      query: (body) => {
-        const uidb64 = body.uidb64;
-        const token = body.token;
-        delete body.uidb64;
-        delete body.token;
-        return {
-          method: "PATCH",
-          url: `/reset-password/${uidb64}/${token}/`,
-          body,
-        };
-      },
-    }),
-    sendEmailVerification: builder.mutation({
-      query: (body) => ({
-        method: "POST",
-        url: "/send-email-verification-link/",
-        body,
+    getDataset: builder.query({
+      query: (userId) => ({
+        url: `/datasets/${userId}`,
       }),
     }),
-    verifyEmail: builder.mutation({
-      query: (body) => {
-        const uidb64 = body.uidb64;
-        const token = body.token;
-        delete body.uidb64;
-        delete body.token;
-
-        return {
-          method: "PATCH",
-          url: `/verify-email/${uidb64}/${token}`,
-        };
-      },
+    checkQuizAnswer: builder.mutation({
+      query: (body) => ({
+        url: "/datasets/check-quiz-answer",
+        method: "POST",
+        body,
+      }),
     }),
   }),
 });
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 
-export const { useRegisterUserMutation, useSendEmailVerificationMutation } =
-  sampleApi;
+export const {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useGetDatasetQuery,
+  useCheckQuizAnswerMutation,
+} = sampleApi;

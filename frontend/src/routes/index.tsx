@@ -12,7 +12,7 @@ export type routeType = {
 };
 function Router() {
   return (
-    <BrowserRouter basename={import.meta.env.VITE_BASE_URL}>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to={DefaultRoute} />} />
         {pageRoutes.map((route: routeType) => (
