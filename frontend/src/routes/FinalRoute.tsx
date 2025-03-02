@@ -10,7 +10,7 @@ const FinalRoute = ({ route }: { route: routeType }) => {
   const router = useRouter();
   const location = useLocation();
   useEffect(() => {
-    if (!route.public && !isLoggedIn()) {
+    if (!route.public && !isLoggedIn()) { 
       router.push("/login");
     }
     if (isLoggedIn() && route.path == "/login") {

@@ -27,10 +27,10 @@ const userSchema = new Schema(
     refreshToken: {
       type: String,
     },
-    dataset: {
-      type: [Schema.Types.ObjectId],
-      ref: "Dataset",
-    },
+    // dataset: {
+    //   type: [Schema.Types.ObjectId],
+    //   ref: "Dataset",
+    // },
   },
   {
     timestamps: true,
@@ -41,9 +41,6 @@ userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
       _id: this._id,
-      email: this.email,
-      userName: this.userName,
-      fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {

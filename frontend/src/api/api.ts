@@ -88,7 +88,7 @@ export const sampleApi = createApi({
     }),
     getUserDetails: builder.query({
       query: () => ({
-        url: "/get-user-details/",
+        url: "/users/current-user",
       }),
     }),
     getDataset: builder.query({
@@ -103,6 +103,13 @@ export const sampleApi = createApi({
         body,
       }),
     }),
+    inviteFriend: builder.mutation({
+      query: (body) => ({
+        url: "/invites/invite-friend",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 // Export hooks for usage in functional components, which are
@@ -111,6 +118,8 @@ export const sampleApi = createApi({
 export const {
   useRegisterUserMutation,
   useLoginUserMutation,
-  useGetDatasetQuery,
+  useLazyGetDatasetQuery,
   useCheckQuizAnswerMutation,
+  useGetUserDetailsQuery,
+  useInviteFriendMutation,
 } = sampleApi;

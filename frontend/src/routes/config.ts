@@ -25,7 +25,7 @@ export const pageRoutes: Array<routeType> = [
   {
     path: "/home",
     component: lazy(() => import("@/pages/home/Home")),
-    public: true,
+    public: false,
     layout: "blank",
   },
 ];

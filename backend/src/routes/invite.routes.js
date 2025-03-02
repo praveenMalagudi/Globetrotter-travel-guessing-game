@@ -4,6 +4,6 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/invite", verifyJWT, inviteFriend); // Secured route for inviting friends
+router.post("/invite-friend", verifyJWT, inviteFriend); // Secured route for inviting friends
 
 export default router;

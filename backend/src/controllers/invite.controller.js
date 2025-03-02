@@ -3,8 +3,11 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 // Function to generate invite link with score
 export const inviteFriend = asyncHandler(async (req, res) => {
-  const { username, score } = req.body; // Username of the friend to invite and score
-  const inviteLink = `${process.env.APP_URL}/play?invitedBy=${req.user.userName}&score=${score}`; // Dynamic invite link with score
+  const {
+    score: { correct, incorrect },
+    pageUrl,
+  } = req.body; // Destructure correct and incorrect scores from score object
+  const inviteLink = `${pageUrl}?invitedBy=${req.user.userName}&correct=${correct}&incorrect=${incorrect}`; // Include correct and incorrect scores in the invite link
 
   return res
     .status(200)

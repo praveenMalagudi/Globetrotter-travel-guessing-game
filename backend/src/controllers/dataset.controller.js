@@ -47,7 +47,7 @@ export const getDataset = asyncHandler(async (req, res) => {
       .slice(0, 4);
 
     return res.status(200).json(
-      new ApiResponse({
+      new ApiResponse(200, {
         clues,
         options: uniqueOptions,
         datasetId: datasetToReturn._id,
@@ -71,6 +71,7 @@ export const checkQuizAnswer = asyncHandler(async (req, res) => {
   return res.status(200).json({
     isCorrect,
     trivia: dataset.trivia, // Assuming 'trivia' is a field in your dataset
-    funFacts: dataset.funFacts, // Assuming 'funFacts' is a field in your dataset
+    funFacts: dataset.fun_fact, // Assuming 'funFacts' is a field in your dataset
+    answer: dataset.city,
   });
 });
